@@ -6,12 +6,9 @@ contract Wallet {
     address payable public owner;
     uint public balance;
 
-    constructor() {
+    event Deposit(address account, uint amount);
+    constructor() payable{
         owner = payable(msg.sender);
-    }
-
-    function depositEther() external payable{
-        balance += msg.value;
     }
 
     function withdrawEther(uint amount) external{
@@ -25,6 +22,10 @@ contract Wallet {
         require(msg.sender == owner, "Only owner can call this function");
         owner = payable(_owner);
     }
-    receive() external payable{}
-    fallback() external payable{}
+    receive() external payable{
+        emit Deposit(msg.sender, msg.value);
+    }
+    fallback() external payable{
+        emit Deposit(msg.sender, msg.value);
+    }
 }

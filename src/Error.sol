@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity 0.8.13;
 
 contract Error{
     error NotAuthorized();
 
-    function throwError() external{
+    function throwError() pure external{
         require(false, "Not Authorized");
     }
 
-    function throwCustomError() external{
+    function throwCustomError() pure external{
         revert NotAuthorized();
     }
 }

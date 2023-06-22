@@ -11,7 +11,7 @@ contract ErrorTest is Test{
         err = new Error();
     }
 
-    function testFail() public{
+    function testFail() view public{
         err.throwError();
     }
 
