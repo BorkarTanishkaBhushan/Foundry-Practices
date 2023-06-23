@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.13;
 
-contract Error{
+contract Error {
     error NotAuthorized();
 
-    function throwError() pure external{
+    function throwError() external pure {
         require(false, "Not Authorized");
     }
 
-    function throwCustomError() pure external{
+    function throwCustomError() external pure {
         revert NotAuthorized();
     }
 }

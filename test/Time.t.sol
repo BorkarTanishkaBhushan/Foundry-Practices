@@ -1,28 +1,28 @@
 //SPDX-License-Identifier:MIT
 pragma solidity 0.8.13;
 
-import '../src/Time.sol';
-import 'forge-std/Test.sol';
+import "../src/Time.sol";
+import "forge-std/Test.sol";
 
-contract TimeTest is Test{
-    Auction public auction ;
-    uint public startAt;
+contract TimeTest is Test {
+    Auction public auction;
+    uint256 public startAt;
 
-    function setUp() public{
+    function setUp() public {
         auction = new Auction();
         startAt = block.timestamp;
     }
 
-    function testFailBidBeforeStartTime() view public{
+    function testFailBidBeforeStartTime() public view {
         auction.bid();
     }
 
-    function testBid() public{
+    function testBid() public {
         vm.warp(startAt + 1 days); //sets block.timestamp to future timestamp
         auction.bid();
     }
 
-    function testFailBidAfterEndTime() public{
+    function testFailBidAfterEndTime() public {
         vm.warp(startAt + 3 days);
         auction.bid();
     }

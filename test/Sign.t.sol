@@ -3,13 +3,12 @@ pragma solidity 0.8.13;
 
 import "forge-std/Test.sol";
 
-contract SignTest is Test{
-
-    function testSignature() public{
-        uint privatekey = 123;
+contract SignTest is Test {
+    function testSignature() public {
+        uint256 privatekey = 123;
         address publickey = vm.addr(privatekey);
-        //since public and private keys are mathematical pairs 
-        //the public key is computed using the privatekey 
+        //since public and private keys are mathematical pairs
+        //the public key is computed using the privatekey
 
         bytes32 messagaHash = keccak256("SecretMessage");
 
@@ -22,8 +21,5 @@ contract SignTest is Test{
         // bytes32 wrongMsg = keccak256("NotTheMessage Which is signed");
         // signer = ecrecover(wrongMsg, v, r, s);
         // assertEq(publickey, signer);
-
-
-
     }
 }

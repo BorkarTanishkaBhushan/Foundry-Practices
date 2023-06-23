@@ -15,6 +15,3 @@ contract DeploySimpleStorage is Script {
         return simpleStorage;
     }
 }
-
-
-
